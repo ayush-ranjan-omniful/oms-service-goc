@@ -27,7 +27,7 @@ func NewOrderService(orderRepo repositories.OrderRepository, sqsPublisher SQSPub
 	}
 }
 
-func (s *OrderService) GetOrdersBySellerId(ctx context.Context, sellerID string) ([]*models.Order, error) {
+func (s *OrderService) GetOrdersBySellerID(ctx context.Context, sellerID string) ([]*models.Order, error) {
 	filters := repositories.OrderFilters{
 		SellerID: sellerID,
 	}
