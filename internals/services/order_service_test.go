@@ -70,7 +70,7 @@ func cleanupTestData(t *testing.T, db mongodm.Database) {
 	}
 }
 
-func TestOrderService_GetOrdersBySellerId(t *testing.T) {
+func TestOrderService_GetOrdersBySellerID(t *testing.T) {
 	service, repo, _ := setupOrderServiceTest(t)
 
 	// Create test orders
@@ -111,7 +111,7 @@ func TestOrderService_GetOrdersBySellerId(t *testing.T) {
 	}
 
 	// Test the service method
-	result, err := service.GetOrdersBySellerId(context.Background(), "seller123")
+	result, err := service.GetOrdersBySellerID(context.Background(), "seller123")
 
 	// Assertions
 	assert.NoError(t, err)
@@ -215,11 +215,11 @@ func TestOrderService_UpdateOrderStatus(t *testing.T) {
 	assert.Equal(t, models.OrderStatusNewOrder, updated.Status)
 }
 
-func TestOrderService_GetOrdersBySellerId_EmptyResult(t *testing.T) {
+func TestOrderService_GetOrdersBySellerID_EmptyResult(t *testing.T) {
 	service, _, _ := setupOrderServiceTest(t)
 
 	// Test with non-existent seller
-	result, err := service.GetOrdersBySellerId(context.Background(), "nonexistent_seller")
+	result, err := service.GetOrdersBySellerID(context.Background(), "nonexistent_seller")
 
 	// Should return empty slice, not error
 	assert.NoError(t, err)
