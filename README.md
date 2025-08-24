@@ -38,12 +38,6 @@ A microservice built with GoCommons framework for managing orders with SQS integ
 - `PUT /api/v1/orders/{id}/status` - Update order status
 - `POST /api/v1/orders/bulk` - Create bulk orders (queues via SQS)
 
-## Quick Start
-
-### Prerequisites
-- Go 1.21+
-- Docker (for MongoDB and LocalStack)
-
 ### Running the Service
 
 1. **Start MongoDB:**
@@ -80,7 +74,7 @@ go test ./internals/repositories -v
 go test ./internals/services -v
 ```
 
-### Example API Calls
+### API Calls
 
 **Health check:**
 ```bash
@@ -132,26 +126,3 @@ The service supports both local and production environments:
 - `SQS_REGION`: AWS region
 - `SQS_ENDPOINT`: SQS endpoint URL
 
-## Architecture
-
-The service follows clean architecture principles:
-
-1. **Models**: Core business entities (`Order`, `OrderItem`)
-2. **Repository**: Data access interface with MongoDB implementation
-3. **Service**: Business logic with SQS integration
-4. **Handlers**: HTTP API layer
-5. **Configuration**: Environment-based config management
-
-## Dependencies
-
-- **GoCommons**: Core framework providing MongoDB, SQS, logging utilities
-- **Gin**: HTTP web framework
-- **Testify**: Testing framework with mocks
-- **MongoDB Driver v2**: Database connectivity
-
-## Development Notes
-
-- Mock SQS publisher is used for local development
-- Repository and service layers include comprehensive unit tests
-- All database operations use interfaces for easy testing and dependency injection
-- Proper error handling and logging throughout the application
